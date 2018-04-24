@@ -1,4 +1,4 @@
 #ifndef funcoes_h
 #define funcoes_h
+#endif
 
-// corpo das funções a baixo
