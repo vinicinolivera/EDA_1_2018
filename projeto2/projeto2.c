@@ -2,41 +2,23 @@
 #include <string.h>
 #include <stdlib.h>
 #include "funcoes.h"
+#define LIN 1025
+#define COL 1025
 
-int **aloca_memoria_arquivo(int num_linhas, int num_colunas);
-int main()
-{
+int **cria_matriz(int num_linhas, int num_colunas, char url[]);
+
+int main(){
 	char url[]="DataSet/asphalt/asphalt_05.txt";
-	char ch;
-	int num_linhas=0, num_colunas=0;
-	char *token;
 	int **matriz;
-	FILE *arq;
 
-	arq = fopen(url, "r");
-	if(arq == NULL){
-		printf("Erro, nao foi possivel abrir o arquivo\n");
-	}
+	matriz = cria_matriz(LIN, COL, url);
 
-	else{
-		while( (ch=fgetc(arq))!= EOF ){
-			if(ch == '\n'){
-				num_linhas++;
-			}
-			else{
-				if(num_linhas == 9){
-					if(ch == ';'){
-						num_colunas++;
-					}
-				}
-			}
+	for(int i = 0; i < LIN; i++){
+		for(int j = 0; j < COL; j++){
+			printf("%d ", matriz[i][j]);
 		}
+		printf("\n");
 	}
-
-	printf("Existem %d linhas no arquivo\n", num_linhas);
-	printf("Existem %d colunas no arquivo\n", num_colunas);
-
-	matriz = aloca_memoria_arquivo(num_linhas, num_colunas);
 
 
   return 0;
